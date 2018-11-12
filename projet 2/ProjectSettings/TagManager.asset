@@ -8,6 +8,7 @@ TagManager:
   - Goal
   - Mover
   - Enemie
+  - Chaser
   layers:
   - Default
   - TransparentFX
@@ -21,7 +22,7 @@ TagManager:
   - Player
   - Waypoint
   - Enemie
-  - 
+  - ChaseZone
   - 
   - 
   - 

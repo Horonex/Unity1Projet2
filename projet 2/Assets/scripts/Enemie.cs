@@ -24,7 +24,8 @@ public class Enemie : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        direction = path.waypoints[(currentPath+1)%pathSize].transform.position- path.waypoints[currentPath % pathSize].transform.position;
+        //direction = path.waypoints[(currentPath+1)%pathSize].transform.position- path.waypoints[currentPath % pathSize].transform.position;
+        direction = path.waypoints[(currentPath+1)%pathSize].transform.position- transform.position;
 
         Move(direction);
 	}

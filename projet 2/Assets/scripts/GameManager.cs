@@ -7,6 +7,8 @@ public static class GameManager  {
 
     [SerializeField] static Scene[] levels;
 
+
+
     public static void Reset()
     {
             SceneManager.LoadScene("Level1");      

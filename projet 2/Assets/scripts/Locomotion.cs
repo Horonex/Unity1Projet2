@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Locomotion : MonoBehaviour
 {
@@ -22,6 +23,7 @@ public class Locomotion : MonoBehaviour
     {
         controller = GetComponent<CharacterController>();
         body = GetComponent<Rigidbody>();
+
         //cam = GetComponent<Camera>();
         // let the gameObject fall down
         //gameObject.transform.position = new Vector3(0, 5, 0);
@@ -75,16 +77,29 @@ public class Locomotion : MonoBehaviour
     {
         if (col.transform.tag == "Goal")
         {
-            Debug.Log("win");
+            //Debug.Log("win");
+            PlayerPrefs.SetInt(SceneManager.GetActiveScene().name, 1);
+            GameObject.Find("LoadingManager").GetComponent<SceneLoader>().LoadingScene();
+
         }
         if (col.transform.tag == "Enemie")
         {
             if(col.GetComponent<Enemie>().isDeadly)
             {
-                Debug.Log("Dead");
-                GameManager.Reset();
+                //Debug.Log("Dead");
+                //GameManager.Reset();
+                GameObject spawnPoint = GameObject.Find("SpawnPoint");
+                spawnPoint.GetComponent<Spawn>().Spawning(transform.gameObject);
             }
             
+        }
+        if(col.transform.tag=="Chaser")
+        {
+            if (col.GetComponent<FollowTarget>().isDeadly)
+            {
+                GameObject spawnPoint = GameObject.Find("SpawnPoint");
+                spawnPoint.GetComponent<Spawn>().Spawning(transform.gameObject);
+            }
         }
     }
 
