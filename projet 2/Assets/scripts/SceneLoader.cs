@@ -11,6 +11,8 @@ public class SceneLoader : MonoBehaviour {
     void Start()
     {
         DontDestroyOnLoad(gameObject);
+        PlayerPrefs.SetFloat("float", 43f);
+        PlayerPrefs.Save();
     }
 
     /// <summary>
